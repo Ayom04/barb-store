@@ -1,3 +1,6 @@
+const { v4: uuidv4 } = require("uuid");
+const Product = require("../models/products.models");
+
 //admin
 const createProduct = async (req, res) => {};
 //admin
