@@ -1,6 +1,6 @@
 const { unauthorisedAccess } = require("../constants/messages");
 
-const checkAdmin = (req, res) => {
+const checkAdmin = (req, res, next) => {
   const { role } = req.query;
 
   try {

@@ -12,6 +12,7 @@ const Authorization = (req, res, next) => {
     const tokenSplit = authorization.split(" ");
 
     jwt.verify(tokenSplit[1], process.env.JWT_SECRET, (err, decoded) => {
+      if (err) throw new Error(err);
       req.params.userEmail = decoded.email;
 
       next();
@@ -24,4 +25,4 @@ const Authorization = (req, res, next) => {
   }
 };
 
-export default Authorization;
+module.exports = Authorization;

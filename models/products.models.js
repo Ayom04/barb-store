@@ -22,19 +22,17 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
-    variations: [
-      {
-        size: {
-          type: String,
-        },
-        color: {
-          type: String,
-        },
-        material: {
-          type: String,
-        },
+    variations: {
+      size: {
+        type: String,
       },
-    ],
+      color: {
+        type: String,
+      },
+      material: {
+        type: String,
+      },
+    },
     isHidden: {
       type: Boolean,
       default: false,

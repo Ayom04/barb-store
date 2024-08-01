@@ -2,7 +2,7 @@ const User = require("../models/user.models");
 
 const { unauthorisedAccess } = require("../constants/messages");
 
-const authentication = async (req, res) => {
+const authentication = async (req, res, next) => {
   const { userEmail } = req.params;
   try {
     const user = await User.findOne({ email: userEmail });

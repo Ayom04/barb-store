@@ -11,7 +11,7 @@ const Login = async (req, res) => {
 
     const isMatch = await comparePassword(password, user.password);
     if (!isMatch) throw new Error("Invalid credentials");
-
+    console.log(user);
     const token = jwt.sign(
       {
         email: user.email,
@@ -24,7 +24,7 @@ const Login = async (req, res) => {
     );
 
     res.set("Authorization", `Bearer ${token}`);
-
+    console.log(token);
     return res.status(200).json({
       status: true,
       message: "Login successful",
