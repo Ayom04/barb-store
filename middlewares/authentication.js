@@ -7,7 +7,6 @@ const authentication = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: userEmail });
     if (!user) throw new Error(unauthorisedAccess);
-
     req.params.user_id = user.id;
     req.query.role = user.role;
     next();

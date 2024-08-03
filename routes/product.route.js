@@ -19,6 +19,13 @@ const {
   checkout,
 } = require("../controllers/product.controller");
 
+//customer
+router.get("/customer", Authorization, authentication, getAvailableProducts);
+router.post("/customer/cart", Authorization, authentication, addToCart);
+router.get("/customer/cart", Authorization, authentication, viewCart);
+router.post("/customer/checkout", Authorization, authentication, checkout);
+router.get("/customer/:id", Authorization, authentication, getAvailableProduct);
+
 //admin
 router.post("/", Authorization, authentication, checkRole, createProduct);
 router.put("/:id", Authorization, authentication, checkRole, editProduct);
@@ -33,13 +40,5 @@ router.get(
   viewStockLevel
 );
 // router.patch("/hide/:id", hideProduct);
-
-//customer
-router.get("/", Authorization, authentication, getAvailableProducts);
-router.post("/cart", Authorization, authentication, addToCart);
-router.get("/cart", Authorization, authentication, viewCart);
-router.post("checkout", Authorization, authentication, checkout);
-router.get("/", Authorization, authentication, getAvailableProducts);
-router.get("/:id", Authorization, authentication, getAvailableProduct);
 
 module.exports = router;
