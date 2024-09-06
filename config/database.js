@@ -4,7 +4,12 @@ const DATABASE_URL = `mongodb://${process.env.DATABASE_HOST}:${process.env.DATAB
 
 const connectToDatabase = async () => {
   try {
-    const databaseConnection = await mongoose.connect(DATABASE_URL);
+    const databaseConnection = await mongoose.connect(
+      process.env.NODE_ENV === "production"
+        ? process.env.DB_PROD_URL
+        : DATABASE_URL
+    );
+
     console.log("Database connection successful");
     return databaseConnection;
   } catch (error) {
